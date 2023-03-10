@@ -2,7 +2,7 @@ const joi = require('joi');
 
 const validateSignin = (req, res, next) => {
   const schema = joi.object({
-    username: joi.string().required(),
+    username: joi.string().email().required(),
     password: joi.string().required(),
   });
   const { error } = schema.validate(req.body);

@@ -16,7 +16,14 @@ const redisConfig = {
 };
 
 global.redisClient = createClient(redisConfig);
-redisClient.connect();
+redisClient
+  .connect()
+  .then(() => {
+    console.log('Redis Connected');
+  })
+  .catch((err) => {
+    console.log('Redis Connection Error', err);
+  });
 
 const { PORT } = require('./utils/config');
 const router = require('./routes');
